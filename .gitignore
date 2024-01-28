@@ -5,4 +5,5 @@
 .DS_Store
 .certs
 # yarn.lock
+.env
 .yarn
