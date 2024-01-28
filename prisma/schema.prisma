@@ -1,0 +1,195 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Team {
+  avatarUrl       String?
+  canComment      Boolean?
+  canShare        Boolean?
+  createdAt       DateTime    @default(now())
+  defaultUserRole String?
+  id              String      @id @default(cuid())
+  inviteRequired  Boolean?
+  name            String?
+  subDomain       String?
+  theme           String?
+  updatedAt       DateTime    @updatedAt
+  url             String?
+  users           User[]
+  workspaces      Workspace[]
+}
+
+model Workspace {
+  createdAt DateTime @default(now())
+  domain    String?
+  id        String   @id @default(cuid())
+  isPublic  Boolean
+  name      String
+  teams     Team[]
+  updatedAt DateTime @updatedAt
+  url       String?
+  user      User[]
+}
+
+model Profile {
+  address   String?
+  age       Int?
+  avatarUrl String?
+  createdAt DateTime @default(now())
+  fullName  String?
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String   @unique
+}
+
+model User {
+  createdAt    DateTime    @default(now())
+  email        String      @unique
+  firstName    String?
+  id           String      @id @default(cuid())
+  isActive     Boolean?    @default(false)
+  isAdmin      Boolean     @default(false)
+  isViewer     Boolean?    @default(false)
+  language     String?      
+  lastActiveAt DateTime?   @updatedAt
+  lastName     String?
+  password     String     
+  profile      Profile?
+  roles        Json       
+  teams        Team[]
+  updatedAt    DateTime    @updatedAt
+  username     String      @unique
+  workspaces   Workspace[]
+}
+
+model Document {
+  actionEvents   ActionEvent[]
+  archiveds      Archived[]
+  authorId       String
+  childDocuments Document[]    @relation(name: "childDocuments")
+  collectionId   String?
+  comments       Comment[]
+  createdAt      DateTime      @default(now())
+  documents      Document[]    @relation(name: "childDocuments")
+  emoji          String?
+  id             String        @id @default(cuid())
+  isFullWidth    Boolean?
+  isPublic       Boolean
+  members        Member[]
+  publishedAt    DateTime?     @updatedAt
+  revision       Int?
+  templateId     String?
+  text           String?
+  title          String
+  updatedAt      DateTime      @updatedAt
+}
+
+model Collection {
+  actionEvents       ActionEvent[]
+  archiveds          Archived[]
+  authorId           String        @unique
+  canShare           Boolean?
+  childCollectionIds String?
+  createdAt          DateTime      @default(now())
+  description        String?
+  downloadPermission Json
+  icon               String?
+  id                 String        @id @default(cuid())
+  index              String?
+  isSaving           Boolean?
+  members            Member[]
+  name               String
+  parentCollectionId String?       @unique
+  updatedAt          DateTime      @updatedAt
+  url                String?       @unique
+  workspaceId        String?       @unique
+}
+
+model Member {
+  collection   Collection? @relation(fields: [collectionId], references: [id])
+  collectionId String?
+  createdAt    DateTime    @default(now())
+  document     Document[]
+  id           String      @id @default(cuid())
+  role         Json
+  updatedAt    DateTime    @updatedAt
+  userId       String?
+}
+
+model Archived {
+  collections Collection[]
+  createdAt   DateTime     @default(now())
+  documents   Document[]
+  id          String       @id @default(cuid())
+  updatedAt   DateTime     @updatedAt
+  userId      String       @unique
+}
+
+model Comment {
+  content         String
+  createdAt       DateTime           @default(now())
+  document        Document?          @relation(fields: [documentId], references: [id])
+  documentId      String?
+  id              String             @id @default(cuid())
+  parentComment   Comment?           @relation(name: "parentComment", fields: [parentCommentId], references: [id])
+  parentCommentId String?
+  position        Position?
+  replies         Comment[]          @relation(name: "parentComment")
+  status          EnumCommentStatus?
+  updatedAt       DateTime           @updatedAt
+  userId          String             @unique
+}
+
+model ActionEvent {
+  action       EnumActionEventAction
+  actor        String?
+  assignee     String?
+  assigner     String?
+  collection   Collection?           @relation(fields: [collectionId], references: [id])
+  collectionId String?
+  createdAt    DateTime              @default(now())
+  document     Document?             @relation(fields: [documentId], references: [id])
+  documentId   String?
+  id           String                @id @default(cuid())
+}
+
+model Position {
+  col        Int
+  comments   Comment? @relation(fields: [commentsId], references: [id])
+  commentsId String?  @unique
+  content    String?
+  createdAt  DateTime @default(now())
+  id         String   @id @default(cuid())
+  line       Int
+  toCol      String?
+  toLine     String?
+  updatedAt  DateTime @updatedAt
+}
+
+enum EnumCommentStatus {
+  Done
+  Todo
+  Doing
+}
+
+enum EnumActionEventAction {
+  Download
+  Upload
+  Edit
+  Delete
+  AddRole
+  RemoveRole
+  Duplicate
+  Comment
+  Share
+  Assign
+  Star
+  Public
+  Private
+}

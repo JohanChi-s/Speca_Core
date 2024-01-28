@@ -1,0 +1,104 @@
+# Default values for core-services. This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: ghcr.io/NAMESPACE/IMAGE_NAME
+  pullPolicy: IfNotPresent
+  tag: latest
+
+variables:
+  configmap: 
+    BCRYPT_SALT: "10"
+    COMPOSE_PROJECT_NAME: "amp_${resourceId}"
+    PORT: "3000"
+    JWT_SECRET_KEY: "Change_ME!!!"
+    JWT_EXPIRATION: "2d"
+    APP_MODE: "both"
+    HTTPS_PORT: "443"
+    SSL_CERT_PATH: "./.certs/server.crt"
+    SSL_KEY_PATH: "./.certs/server.key"
+    CA_CERT_PATH: "./.certs/ca.crt"
+    DB_URL: "postgres://admin:admin@localhost:5432/my-db"
+    DB_USER: "admin"
+    DB_PASSWORD: "admin"
+    DB_PORT: "5432"
+    DB_NAME: "my-db"
+    OTEL_COLLECTOR_HOST: "localhost"
+    OTEL_COLLECTOR_PORT_GRPC: "4317"
+    OTEL_COLLECTOR_PORT_HTTP: "4318"
+    OTEL_EXPORTER_OTLP_ENDPOINT: "http://${OTEL_COLLECTOR_HOST}:${OTEL_COLLECTOR_PORT_HTTP}"
+    JAEGER_AGENT_HOST: "jaeger"
+    JAEGER_AGENT_PORT: "16686"
+    REDIS_HOST: "localhost"
+    REDIS_PORT: "6379"
+    REDIS_TTL: "5000"
+    REDIS_USERNAME: ""
+    REDIS_PASSWORD: ""
+    AWS_REGION: "us-east-1"
+    KEYCLOAK_URL: "http://localhost:8080"
+    KEYCLOAK_REALM: "master"
+    KEYCLOAK_CLIENT_ID: "amplication-server"
+    KEYCLOAK_ADMIN_USERNAME: "admin"
+    KEYCLOAK_ADMIN_PASSWORD: "password"
+    KEYCLOAK_PORT: "8080"
+  secret: {}
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+podSecurityContext: {}
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 3000
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: server.example.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-core-services-tls
+  #    hosts:
+  #      - server.example.com
+
+# We usually recommend not to specify default resources and to leave this as a conscious
+# choice for the user. This also increases chances charts run on environments with little
+# resources, such as Minikube. If you do want to specify resources, uncomment the following
+# lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+# limits:
+#   cpu: 100m
+#   memory: 128Mi
+# requests:
+#   cpu: 100m
+#   memory: 128Mi
+resources: {}
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+tolerations: []
+affinity: {}

@@ -1,0 +1,1206 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ActionEvent {
+  action: EnumActionEventAction
+  actor: String
+  assignee: String
+  assigner: String
+  collection: Collection
+  createdAt: DateTime!
+  document: Document
+  id: String!
+}
+
+input ActionEventCreateInput {
+  action: EnumActionEventAction!
+  actor: String
+  assignee: String
+  assigner: String
+  collection: CollectionWhereUniqueInput
+  document: DocumentWhereUniqueInput
+}
+
+input ActionEventCreateNestedManyWithoutCollectionsInput {
+  connect: [ActionEventWhereUniqueInput!]
+}
+
+input ActionEventCreateNestedManyWithoutDocumentsInput {
+  connect: [ActionEventWhereUniqueInput!]
+}
+
+input ActionEventListRelationFilter {
+  every: ActionEventWhereInput
+  none: ActionEventWhereInput
+  some: ActionEventWhereInput
+}
+
+input ActionEventOrderByInput {
+  action: SortOrder
+  actor: SortOrder
+  assignee: SortOrder
+  assigner: SortOrder
+  collectionId: SortOrder
+  createdAt: SortOrder
+  documentId: SortOrder
+  id: SortOrder
+}
+
+input ActionEventUpdateInput {
+  action: EnumActionEventAction
+  actor: String
+  assignee: String
+  assigner: String
+  collection: CollectionWhereUniqueInput
+  document: DocumentWhereUniqueInput
+}
+
+input ActionEventUpdateManyWithoutCollectionsInput {
+  connect: [ActionEventWhereUniqueInput!]
+  disconnect: [ActionEventWhereUniqueInput!]
+  set: [ActionEventWhereUniqueInput!]
+}
+
+input ActionEventUpdateManyWithoutDocumentsInput {
+  connect: [ActionEventWhereUniqueInput!]
+  disconnect: [ActionEventWhereUniqueInput!]
+  set: [ActionEventWhereUniqueInput!]
+}
+
+input ActionEventWhereInput {
+  action: EnumActionEventAction
+  actor: StringNullableFilter
+  assignee: StringNullableFilter
+  assigner: StringNullableFilter
+  collection: CollectionWhereUniqueInput
+  createdAt: DateTimeFilter
+  document: DocumentWhereUniqueInput
+  id: StringFilter
+}
+
+input ActionEventWhereUniqueInput {
+  id: String!
+}
+
+type Archived {
+  collections(orderBy: [CollectionOrderByInput!], skip: Float, take: Float, where: CollectionWhereInput): [Collection!]!
+  createdAt: DateTime!
+  documents(orderBy: [DocumentOrderByInput!], skip: Float, take: Float, where: DocumentWhereInput): [Document!]!
+  id: String!
+  updatedAt: DateTime!
+  userId: String!
+}
+
+input ArchivedCreateInput {
+  collections: CollectionCreateNestedManyWithoutArchivedsInput
+  documents: DocumentCreateNestedManyWithoutArchivedsInput
+  userId: String!
+}
+
+input ArchivedCreateNestedManyWithoutCollectionsInput {
+  connect: [ArchivedWhereUniqueInput!]
+}
+
+input ArchivedCreateNestedManyWithoutDocumentsInput {
+  connect: [ArchivedWhereUniqueInput!]
+}
+
+input ArchivedListRelationFilter {
+  every: ArchivedWhereInput
+  none: ArchivedWhereInput
+  some: ArchivedWhereInput
+}
+
+input ArchivedOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  updatedAt: SortOrder
+  userId: SortOrder
+}
+
+input ArchivedUpdateInput {
+  collections: CollectionUpdateManyWithoutArchivedsInput
+  documents: DocumentUpdateManyWithoutArchivedsInput
+  userId: String
+}
+
+input ArchivedUpdateManyWithoutCollectionsInput {
+  connect: [ArchivedWhereUniqueInput!]
+  disconnect: [ArchivedWhereUniqueInput!]
+  set: [ArchivedWhereUniqueInput!]
+}
+
+input ArchivedUpdateManyWithoutDocumentsInput {
+  connect: [ArchivedWhereUniqueInput!]
+  disconnect: [ArchivedWhereUniqueInput!]
+  set: [ArchivedWhereUniqueInput!]
+}
+
+input ArchivedWhereInput {
+  collections: CollectionListRelationFilter
+  createdAt: DateTimeFilter
+  documents: DocumentListRelationFilter
+  id: StringFilter
+  updatedAt: DateTimeFilter
+  userId: StringFilter
+}
+
+input ArchivedWhereUniqueInput {
+  id: String!
+}
+
+input BooleanFilter {
+  equals: Boolean
+  not: Boolean
+}
+
+input BooleanNullableFilter {
+  equals: Boolean
+  not: Boolean
+}
+
+type Collection {
+  actionEvents(orderBy: [ActionEventOrderByInput!], skip: Float, take: Float, where: ActionEventWhereInput): [ActionEvent!]!
+  archiveds(orderBy: [ArchivedOrderByInput!], skip: Float, take: Float, where: ArchivedWhereInput): [Archived!]!
+  authorId: String!
+  canShare: Boolean
+  childCollectionIds: String
+  createdAt: DateTime!
+  description: String
+  downloadPermission: JSON!
+  icon: String
+  id: String!
+  index: String
+  isSaving: Boolean
+  members(orderBy: [MemberOrderByInput!], skip: Float, take: Float, where: MemberWhereInput): [Member!]!
+  name: String!
+  parentCollectionId: String
+  updatedAt: DateTime!
+  url: String
+  workspaceId: String
+}
+
+input CollectionCreateInput {
+  actionEvents: ActionEventCreateNestedManyWithoutCollectionsInput
+  archiveds: ArchivedCreateNestedManyWithoutCollectionsInput
+  authorId: String!
+  canShare: Boolean
+  childCollectionIds: String
+  description: String
+  downloadPermission: JSON!
+  icon: String
+  index: String
+  isSaving: Boolean
+  members: MemberCreateNestedManyWithoutCollectionsInput
+  name: String!
+  parentCollectionId: String
+  url: String
+  workspaceId: String
+}
+
+input CollectionCreateNestedManyWithoutArchivedsInput {
+  connect: [CollectionWhereUniqueInput!]
+}
+
+input CollectionListRelationFilter {
+  every: CollectionWhereInput
+  none: CollectionWhereInput
+  some: CollectionWhereInput
+}
+
+input CollectionOrderByInput {
+  authorId: SortOrder
+  canShare: SortOrder
+  childCollectionIds: SortOrder
+  createdAt: SortOrder
+  description: SortOrder
+  downloadPermission: SortOrder
+  icon: SortOrder
+  id: SortOrder
+  index: SortOrder
+  isSaving: SortOrder
+  name: SortOrder
+  parentCollectionId: SortOrder
+  updatedAt: SortOrder
+  url: SortOrder
+  workspaceId: SortOrder
+}
+
+input CollectionUpdateInput {
+  actionEvents: ActionEventUpdateManyWithoutCollectionsInput
+  archiveds: ArchivedUpdateManyWithoutCollectionsInput
+  authorId: String
+  canShare: Boolean
+  childCollectionIds: String
+  description: String
+  downloadPermission: JSON
+  icon: String
+  index: String
+  isSaving: Boolean
+  members: MemberUpdateManyWithoutCollectionsInput
+  name: String
+  parentCollectionId: String
+  url: String
+  workspaceId: String
+}
+
+input CollectionUpdateManyWithoutArchivedsInput {
+  connect: [CollectionWhereUniqueInput!]
+  disconnect: [CollectionWhereUniqueInput!]
+  set: [CollectionWhereUniqueInput!]
+}
+
+input CollectionWhereInput {
+  actionEvents: ActionEventListRelationFilter
+  archiveds: ArchivedListRelationFilter
+  authorId: StringFilter
+  canShare: BooleanNullableFilter
+  childCollectionIds: StringNullableFilter
+  createdAt: DateTimeFilter
+  description: StringNullableFilter
+  downloadPermission: JsonFilter
+  icon: StringNullableFilter
+  id: StringFilter
+  index: StringNullableFilter
+  isSaving: BooleanNullableFilter
+  members: MemberListRelationFilter
+  name: StringFilter
+  parentCollectionId: StringNullableFilter
+  updatedAt: DateTimeFilter
+  url: StringNullableFilter
+  workspaceId: StringNullableFilter
+}
+
+input CollectionWhereUniqueInput {
+  id: String!
+}
+
+type Comment {
+  content: String!
+  createdAt: DateTime!
+  document: Document
+  id: String!
+  parentComment: Comment
+  position: Position
+  replies(orderBy: [CommentOrderByInput!], skip: Float, take: Float, where: CommentWhereInput): [Comment!]!
+  status: EnumCommentStatus
+  updatedAt: DateTime!
+  userId: String!
+}
+
+input CommentCreateInput {
+  content: String!
+  document: DocumentWhereUniqueInput
+  parentComment: CommentWhereUniqueInput
+  position: PositionWhereUniqueInput
+  replies: CommentCreateNestedManyWithoutCommentsInput
+  status: EnumCommentStatus
+  userId: String!
+}
+
+input CommentCreateNestedManyWithoutCommentsInput {
+  connect: [CommentWhereUniqueInput!]
+}
+
+input CommentCreateNestedManyWithoutDocumentsInput {
+  connect: [CommentWhereUniqueInput!]
+}
+
+input CommentListRelationFilter {
+  every: CommentWhereInput
+  none: CommentWhereInput
+  some: CommentWhereInput
+}
+
+input CommentOrderByInput {
+  content: SortOrder
+  createdAt: SortOrder
+  documentId: SortOrder
+  id: SortOrder
+  parentCommentId: SortOrder
+  positionId: SortOrder
+  status: SortOrder
+  updatedAt: SortOrder
+  userId: SortOrder
+}
+
+input CommentUpdateInput {
+  content: String
+  document: DocumentWhereUniqueInput
+  parentComment: CommentWhereUniqueInput
+  position: PositionWhereUniqueInput
+  replies: CommentUpdateManyWithoutCommentsInput
+  status: EnumCommentStatus
+  userId: String
+}
+
+input CommentUpdateManyWithoutCommentsInput {
+  connect: [CommentWhereUniqueInput!]
+  disconnect: [CommentWhereUniqueInput!]
+  set: [CommentWhereUniqueInput!]
+}
+
+input CommentUpdateManyWithoutDocumentsInput {
+  connect: [CommentWhereUniqueInput!]
+  disconnect: [CommentWhereUniqueInput!]
+  set: [CommentWhereUniqueInput!]
+}
+
+input CommentWhereInput {
+  content: StringFilter
+  createdAt: DateTimeFilter
+  document: DocumentWhereUniqueInput
+  id: StringFilter
+  parentComment: CommentWhereUniqueInput
+  position: PositionWhereUniqueInput
+  replies: CommentListRelationFilter
+  status: EnumCommentStatus
+  updatedAt: DateTimeFilter
+  userId: StringFilter
+}
+
+input CommentWhereUniqueInput {
+  id: String!
+}
+
+input Credentials {
+  password: String!
+  username: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input DateTimeFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: DateTime
+  notIn: [DateTime!]
+}
+
+input DateTimeNullableFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: DateTime
+  notIn: [DateTime!]
+}
+
+type Document {
+  actionEvents(orderBy: [ActionEventOrderByInput!], skip: Float, take: Float, where: ActionEventWhereInput): [ActionEvent!]!
+  archiveds(orderBy: [ArchivedOrderByInput!], skip: Float, take: Float, where: ArchivedWhereInput): [Archived!]!
+  authorId: String!
+  childDocuments(orderBy: [DocumentOrderByInput!], skip: Float, take: Float, where: DocumentWhereInput): [Document!]!
+  collectionId: String
+  comments(orderBy: [CommentOrderByInput!], skip: Float, take: Float, where: CommentWhereInput): [Comment!]!
+  createdAt: DateTime!
+  documents(orderBy: [DocumentOrderByInput!], skip: Float, take: Float, where: DocumentWhereInput): [Document!]!
+  emoji: String
+  id: String!
+  isFullWidth: Boolean
+  isPublic: Boolean!
+  members(orderBy: [MemberOrderByInput!], skip: Float, take: Float, where: MemberWhereInput): [Member!]!
+  publishedAt: DateTime
+  revision: Float
+  templateId: String
+  text: String
+  title: String!
+  updatedAt: DateTime!
+}
+
+input DocumentCreateInput {
+  actionEvents: ActionEventCreateNestedManyWithoutDocumentsInput
+  archiveds: ArchivedCreateNestedManyWithoutDocumentsInput
+  authorId: String!
+  childDocuments: DocumentCreateNestedManyWithoutDocumentsInput
+  collectionId: String
+  comments: CommentCreateNestedManyWithoutDocumentsInput
+  documents: DocumentCreateNestedManyWithoutDocumentsInput
+  emoji: String
+  isFullWidth: Boolean
+  isPublic: Boolean!
+  members: MemberCreateNestedManyWithoutDocumentsInput
+  revision: Float
+  templateId: String
+  text: String
+  title: String!
+}
+
+input DocumentCreateNestedManyWithoutArchivedsInput {
+  connect: [DocumentWhereUniqueInput!]
+}
+
+input DocumentCreateNestedManyWithoutDocumentsInput {
+  connect: [DocumentWhereUniqueInput!]
+}
+
+input DocumentCreateNestedManyWithoutMembersInput {
+  connect: [DocumentWhereUniqueInput!]
+}
+
+input DocumentListRelationFilter {
+  every: DocumentWhereInput
+  none: DocumentWhereInput
+  some: DocumentWhereInput
+}
+
+input DocumentOrderByInput {
+  authorId: SortOrder
+  collectionId: SortOrder
+  createdAt: SortOrder
+  emoji: SortOrder
+  id: SortOrder
+  isFullWidth: SortOrder
+  isPublic: SortOrder
+  publishedAt: SortOrder
+  revision: SortOrder
+  templateId: SortOrder
+  text: SortOrder
+  title: SortOrder
+  updatedAt: SortOrder
+}
+
+input DocumentUpdateInput {
+  actionEvents: ActionEventUpdateManyWithoutDocumentsInput
+  archiveds: ArchivedUpdateManyWithoutDocumentsInput
+  authorId: String
+  childDocuments: DocumentUpdateManyWithoutDocumentsInput
+  collectionId: String
+  comments: CommentUpdateManyWithoutDocumentsInput
+  documents: DocumentUpdateManyWithoutDocumentsInput
+  emoji: String
+  isFullWidth: Boolean
+  isPublic: Boolean
+  members: MemberUpdateManyWithoutDocumentsInput
+  revision: Float
+  templateId: String
+  text: String
+  title: String
+}
+
+input DocumentUpdateManyWithoutArchivedsInput {
+  connect: [DocumentWhereUniqueInput!]
+  disconnect: [DocumentWhereUniqueInput!]
+  set: [DocumentWhereUniqueInput!]
+}
+
+input DocumentUpdateManyWithoutDocumentsInput {
+  connect: [DocumentWhereUniqueInput!]
+  disconnect: [DocumentWhereUniqueInput!]
+  set: [DocumentWhereUniqueInput!]
+}
+
+input DocumentUpdateManyWithoutMembersInput {
+  connect: [DocumentWhereUniqueInput!]
+  disconnect: [DocumentWhereUniqueInput!]
+  set: [DocumentWhereUniqueInput!]
+}
+
+input DocumentWhereInput {
+  actionEvents: ActionEventListRelationFilter
+  archiveds: ArchivedListRelationFilter
+  authorId: StringFilter
+  childDocuments: DocumentListRelationFilter
+  collectionId: StringNullableFilter
+  comments: CommentListRelationFilter
+  createdAt: DateTimeFilter
+  documents: DocumentListRelationFilter
+  emoji: StringNullableFilter
+  id: StringFilter
+  isFullWidth: BooleanNullableFilter
+  isPublic: BooleanFilter
+  members: MemberListRelationFilter
+  publishedAt: DateTimeNullableFilter
+  revision: IntNullableFilter
+  templateId: StringNullableFilter
+  text: StringNullableFilter
+  title: StringFilter
+  updatedAt: DateTimeFilter
+}
+
+input DocumentWhereUniqueInput {
+  id: String!
+}
+
+enum EnumActionEventAction {
+  AddRole
+  Assign
+  Comment
+  Delete
+  Download
+  Duplicate
+  Edit
+  Private
+  Public
+  RemoveRole
+  Share
+  Star
+  Upload
+}
+
+enum EnumCommentStatus {
+  Doing
+  Done
+  Todo
+}
+
+input IntFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: Int
+  notIn: [Int!]
+}
+
+input IntNullableFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: Int
+  notIn: [Int!]
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+"""
+The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSONObject
+
+input JsonFilter {
+  equals: JSONObject
+  not: JSONObject
+}
+
+type Member {
+  collection: Collection
+  createdAt: DateTime!
+  document(orderBy: [DocumentOrderByInput!], skip: Float, take: Float, where: DocumentWhereInput): [Document!]!
+  id: String!
+  role: JSON!
+  updatedAt: DateTime!
+  userId: String
+}
+
+input MemberCreateInput {
+  collection: CollectionWhereUniqueInput
+  document: DocumentCreateNestedManyWithoutMembersInput
+  role: JSON!
+  userId: String
+}
+
+input MemberCreateNestedManyWithoutCollectionsInput {
+  connect: [MemberWhereUniqueInput!]
+}
+
+input MemberCreateNestedManyWithoutDocumentsInput {
+  connect: [MemberWhereUniqueInput!]
+}
+
+input MemberListRelationFilter {
+  every: MemberWhereInput
+  none: MemberWhereInput
+  some: MemberWhereInput
+}
+
+input MemberOrderByInput {
+  collectionId: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  role: SortOrder
+  updatedAt: SortOrder
+  userId: SortOrder
+}
+
+input MemberUpdateInput {
+  collection: CollectionWhereUniqueInput
+  document: DocumentUpdateManyWithoutMembersInput
+  role: JSON
+  userId: String
+}
+
+input MemberUpdateManyWithoutCollectionsInput {
+  connect: [MemberWhereUniqueInput!]
+  disconnect: [MemberWhereUniqueInput!]
+  set: [MemberWhereUniqueInput!]
+}
+
+input MemberUpdateManyWithoutDocumentsInput {
+  connect: [MemberWhereUniqueInput!]
+  disconnect: [MemberWhereUniqueInput!]
+  set: [MemberWhereUniqueInput!]
+}
+
+input MemberWhereInput {
+  collection: CollectionWhereUniqueInput
+  createdAt: DateTimeFilter
+  document: DocumentListRelationFilter
+  id: StringFilter
+  role: JsonFilter
+  updatedAt: DateTimeFilter
+  userId: StringNullableFilter
+}
+
+input MemberWhereUniqueInput {
+  id: String!
+}
+
+type MetaQueryPayload {
+  count: Float!
+}
+
+type Mutation {
+  createActionEvent(data: ActionEventCreateInput!): ActionEvent!
+  createArchived(data: ArchivedCreateInput!): Archived!
+  createCollection(data: CollectionCreateInput!): Collection!
+  createComment(data: CommentCreateInput!): Comment!
+  createDocument(data: DocumentCreateInput!): Document!
+  createMember(data: MemberCreateInput!): Member!
+  createPosition(data: PositionCreateInput!): Position!
+  createProfile(data: ProfileCreateInput!): Profile!
+  createTeam(data: TeamCreateInput!): Team!
+  createUser(data: UserCreateInput!): User!
+  createWorkspace(data: WorkspaceCreateInput!): Workspace!
+  deleteActionEvent(where: ActionEventWhereUniqueInput!): ActionEvent!
+  deleteArchived(where: ArchivedWhereUniqueInput!): Archived!
+  deleteCollection(where: CollectionWhereUniqueInput!): Collection!
+  deleteComment(where: CommentWhereUniqueInput!): Comment!
+  deleteDocument(where: DocumentWhereUniqueInput!): Document!
+  deleteMember(where: MemberWhereUniqueInput!): Member!
+  deletePosition(where: PositionWhereUniqueInput!): Position!
+  deleteProfile(where: ProfileWhereUniqueInput!): Profile!
+  deleteTeam(where: TeamWhereUniqueInput!): Team!
+  deleteUser(where: UserWhereUniqueInput!): User!
+  deleteWorkspace(where: WorkspaceWhereUniqueInput!): Workspace!
+  login(credentials: Credentials!): UserInfo!
+  updateActionEvent(data: ActionEventUpdateInput!, where: ActionEventWhereUniqueInput!): ActionEvent!
+  updateArchived(data: ArchivedUpdateInput!, where: ArchivedWhereUniqueInput!): Archived!
+  updateCollection(data: CollectionUpdateInput!, where: CollectionWhereUniqueInput!): Collection!
+  updateComment(data: CommentUpdateInput!, where: CommentWhereUniqueInput!): Comment!
+  updateDocument(data: DocumentUpdateInput!, where: DocumentWhereUniqueInput!): Document!
+  updateMember(data: MemberUpdateInput!, where: MemberWhereUniqueInput!): Member!
+  updatePosition(data: PositionUpdateInput!, where: PositionWhereUniqueInput!): Position!
+  updateProfile(data: ProfileUpdateInput!, where: ProfileWhereUniqueInput!): Profile!
+  updateTeam(data: TeamUpdateInput!, where: TeamWhereUniqueInput!): Team!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+  updateWorkspace(data: WorkspaceUpdateInput!, where: WorkspaceWhereUniqueInput!): Workspace!
+}
+
+type Position {
+  col: Float!
+  comments: Comment
+  content: String
+  createdAt: DateTime!
+  id: String!
+  line: Float!
+  toCol: String
+  toLine: String
+  updatedAt: DateTime!
+}
+
+input PositionCreateInput {
+  col: Float!
+  comments: CommentWhereUniqueInput
+  content: String
+  line: Float!
+  toCol: String
+  toLine: String
+}
+
+input PositionOrderByInput {
+  col: SortOrder
+  commentsId: SortOrder
+  content: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  line: SortOrder
+  toCol: SortOrder
+  toLine: SortOrder
+  updatedAt: SortOrder
+}
+
+input PositionUpdateInput {
+  col: Float
+  comments: CommentWhereUniqueInput
+  content: String
+  line: Float
+  toCol: String
+  toLine: String
+}
+
+input PositionWhereInput {
+  col: IntFilter
+  comments: CommentWhereUniqueInput
+  content: StringNullableFilter
+  createdAt: DateTimeFilter
+  id: StringFilter
+  line: IntFilter
+  toCol: StringNullableFilter
+  toLine: StringNullableFilter
+  updatedAt: DateTimeFilter
+}
+
+input PositionWhereUniqueInput {
+  id: String!
+}
+
+type Profile {
+  address: String
+  age: Float
+  avatarUrl: String
+  createdAt: DateTime!
+  fullName: String
+  id: String!
+  updatedAt: DateTime!
+  user: User
+}
+
+input ProfileCreateInput {
+  address: String
+  age: Float
+  avatarUrl: String
+  fullName: String
+  user: UserWhereUniqueInput!
+}
+
+input ProfileOrderByInput {
+  address: SortOrder
+  age: SortOrder
+  avatarUrl: SortOrder
+  createdAt: SortOrder
+  fullName: SortOrder
+  id: SortOrder
+  updatedAt: SortOrder
+  userId: SortOrder
+}
+
+input ProfileUpdateInput {
+  address: String
+  age: Float
+  avatarUrl: String
+  fullName: String
+  user: UserWhereUniqueInput
+}
+
+input ProfileWhereInput {
+  address: StringNullableFilter
+  age: IntNullableFilter
+  avatarUrl: StringNullableFilter
+  createdAt: DateTimeFilter
+  fullName: StringNullableFilter
+  id: StringFilter
+  updatedAt: DateTimeFilter
+  user: UserWhereUniqueInput
+}
+
+input ProfileWhereUniqueInput {
+  id: String!
+}
+
+type Query {
+  _actionEventsMeta(where: ActionEventWhereInput): MetaQueryPayload!
+  _archivedsMeta(where: ArchivedWhereInput): MetaQueryPayload!
+  _collectionsMeta(where: CollectionWhereInput): MetaQueryPayload!
+  _commentsMeta(where: CommentWhereInput): MetaQueryPayload!
+  _documentsMeta(where: DocumentWhereInput): MetaQueryPayload!
+  _membersMeta(where: MemberWhereInput): MetaQueryPayload!
+  _positionsMeta(where: PositionWhereInput): MetaQueryPayload!
+  _profilesMeta(where: ProfileWhereInput): MetaQueryPayload!
+  _teamsMeta(where: TeamWhereInput): MetaQueryPayload!
+  _usersMeta(where: UserWhereInput): MetaQueryPayload!
+  _workspacesMeta(where: WorkspaceWhereInput): MetaQueryPayload!
+  actionEvent(where: ActionEventWhereUniqueInput!): ActionEvent
+  actionEvents(orderBy: [ActionEventOrderByInput!], skip: Float, take: Float, where: ActionEventWhereInput): [ActionEvent!]!
+  archived(where: ArchivedWhereUniqueInput!): Archived
+  archiveds(orderBy: [ArchivedOrderByInput!], skip: Float, take: Float, where: ArchivedWhereInput): [Archived!]!
+  collection(where: CollectionWhereUniqueInput!): Collection
+  collections(orderBy: [CollectionOrderByInput!], skip: Float, take: Float, where: CollectionWhereInput): [Collection!]!
+  comment(where: CommentWhereUniqueInput!): Comment
+  comments(orderBy: [CommentOrderByInput!], skip: Float, take: Float, where: CommentWhereInput): [Comment!]!
+  document(where: DocumentWhereUniqueInput!): Document
+  documents(orderBy: [DocumentOrderByInput!], skip: Float, take: Float, where: DocumentWhereInput): [Document!]!
+  member(where: MemberWhereUniqueInput!): Member
+  members(orderBy: [MemberOrderByInput!], skip: Float, take: Float, where: MemberWhereInput): [Member!]!
+  position(where: PositionWhereUniqueInput!): Position
+  positions(orderBy: [PositionOrderByInput!], skip: Float, take: Float, where: PositionWhereInput): [Position!]!
+  profile(where: ProfileWhereUniqueInput!): Profile
+  profiles(orderBy: [ProfileOrderByInput!], skip: Float, take: Float, where: ProfileWhereInput): [Profile!]!
+  team(where: TeamWhereUniqueInput!): Team
+  teams(orderBy: [TeamOrderByInput!], skip: Float, take: Float, where: TeamWhereInput): [Team!]!
+  user(where: UserWhereUniqueInput!): User
+  userInfo: UserInfo!
+  users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+  workspace(where: WorkspaceWhereUniqueInput!): Workspace
+  workspaces(orderBy: [WorkspaceOrderByInput!], skip: Float, take: Float, where: WorkspaceWhereInput): [Workspace!]!
+}
+
+enum QueryMode {
+  Default
+  Insensitive
+}
+
+enum SortOrder {
+  Asc
+  Desc
+}
+
+input StringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+type Team {
+  avatarUrl: String
+  canComment: Boolean
+  canShare: Boolean
+  createdAt: DateTime!
+  defaultUserRole: String
+  id: String!
+  inviteRequired: Boolean
+  name: String
+  subDomain: String
+  theme: String
+  updatedAt: DateTime!
+  url: String
+  users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+  workspaces(orderBy: [WorkspaceOrderByInput!], skip: Float, take: Float, where: WorkspaceWhereInput): [Workspace!]!
+}
+
+input TeamCreateInput {
+  avatarUrl: String
+  canComment: Boolean
+  canShare: Boolean
+  defaultUserRole: String
+  inviteRequired: Boolean
+  name: String
+  subDomain: String
+  theme: String
+  url: String
+  users: UserCreateNestedManyWithoutTeamsInput
+  workspaces: WorkspaceCreateNestedManyWithoutTeamsInput
+}
+
+input TeamCreateNestedManyWithoutUsersInput {
+  connect: [TeamWhereUniqueInput!]
+}
+
+input TeamCreateNestedManyWithoutWorkspacesInput {
+  connect: [TeamWhereUniqueInput!]
+}
+
+input TeamListRelationFilter {
+  every: TeamWhereInput
+  none: TeamWhereInput
+  some: TeamWhereInput
+}
+
+input TeamOrderByInput {
+  avatarUrl: SortOrder
+  canComment: SortOrder
+  canShare: SortOrder
+  createdAt: SortOrder
+  defaultUserRole: SortOrder
+  id: SortOrder
+  inviteRequired: SortOrder
+  name: SortOrder
+  subDomain: SortOrder
+  theme: SortOrder
+  updatedAt: SortOrder
+  url: SortOrder
+}
+
+input TeamUpdateInput {
+  avatarUrl: String
+  canComment: Boolean
+  canShare: Boolean
+  defaultUserRole: String
+  inviteRequired: Boolean
+  name: String
+  subDomain: String
+  theme: String
+  url: String
+  users: UserUpdateManyWithoutTeamsInput
+  workspaces: WorkspaceUpdateManyWithoutTeamsInput
+}
+
+input TeamUpdateManyWithoutUsersInput {
+  connect: [TeamWhereUniqueInput!]
+  disconnect: [TeamWhereUniqueInput!]
+  set: [TeamWhereUniqueInput!]
+}
+
+input TeamUpdateManyWithoutWorkspacesInput {
+  connect: [TeamWhereUniqueInput!]
+  disconnect: [TeamWhereUniqueInput!]
+  set: [TeamWhereUniqueInput!]
+}
+
+input TeamWhereInput {
+  avatarUrl: StringNullableFilter
+  canComment: BooleanNullableFilter
+  canShare: BooleanNullableFilter
+  createdAt: DateTimeFilter
+  defaultUserRole: StringNullableFilter
+  id: StringFilter
+  inviteRequired: BooleanNullableFilter
+  name: StringNullableFilter
+  subDomain: StringNullableFilter
+  theme: StringNullableFilter
+  updatedAt: DateTimeFilter
+  url: StringNullableFilter
+  users: UserListRelationFilter
+  workspaces: WorkspaceListRelationFilter
+}
+
+input TeamWhereUniqueInput {
+  id: String!
+}
+
+type User {
+  createdAt: DateTime!
+  email: String!
+  firstName: String
+  id: String!
+  isActive: Boolean
+  isAdmin: Boolean!
+  isViewer: Boolean
+  language: String
+  lastActiveAt: DateTime
+  lastName: String
+  profile: Profile
+  roles: JSON!
+  teams(orderBy: [TeamOrderByInput!], skip: Float, take: Float, where: TeamWhereInput): [Team!]!
+  updatedAt: DateTime!
+  username: String!
+  workspaces(orderBy: [WorkspaceOrderByInput!], skip: Float, take: Float, where: WorkspaceWhereInput): [Workspace!]!
+}
+
+input UserCreateInput {
+  email: String!
+  firstName: String
+  isActive: Boolean
+  isAdmin: Boolean!
+  isViewer: Boolean
+  language: String
+  lastName: String
+  password: String!
+  profile: ProfileWhereUniqueInput
+  roles: JSON!
+  teams: TeamCreateNestedManyWithoutUsersInput
+  username: String!
+  workspaces: WorkspaceCreateNestedManyWithoutUsersInput
+}
+
+input UserCreateNestedManyWithoutTeamsInput {
+  connect: [UserWhereUniqueInput!]
+}
+
+input UserCreateNestedManyWithoutWorkspacesInput {
+  connect: [UserWhereUniqueInput!]
+}
+
+type UserInfo {
+  accessToken: String
+  id: String!
+  roles: [String!]!
+  username: String!
+}
+
+input UserListRelationFilter {
+  every: UserWhereInput
+  none: UserWhereInput
+  some: UserWhereInput
+}
+
+input UserOrderByInput {
+  createdAt: SortOrder
+  email: SortOrder
+  firstName: SortOrder
+  id: SortOrder
+  isActive: SortOrder
+  isAdmin: SortOrder
+  isViewer: SortOrder
+  language: SortOrder
+  lastActiveAt: SortOrder
+  lastName: SortOrder
+  password: SortOrder
+  roles: SortOrder
+  updatedAt: SortOrder
+  username: SortOrder
+}
+
+input UserUpdateInput {
+  email: String
+  firstName: String
+  isActive: Boolean
+  isAdmin: Boolean
+  isViewer: Boolean
+  language: String
+  lastName: String
+  password: String
+  profile: ProfileWhereUniqueInput
+  roles: JSON
+  teams: TeamUpdateManyWithoutUsersInput
+  username: String
+  workspaces: WorkspaceUpdateManyWithoutUsersInput
+}
+
+input UserUpdateManyWithoutTeamsInput {
+  connect: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+}
+
+input UserUpdateManyWithoutWorkspacesInput {
+  connect: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+}
+
+input UserWhereInput {
+  createdAt: DateTimeFilter
+  email: StringFilter
+  firstName: StringNullableFilter
+  id: StringFilter
+  isActive: BooleanNullableFilter
+  isAdmin: BooleanFilter
+  isViewer: BooleanNullableFilter
+  language: StringNullableFilter
+  lastActiveAt: DateTimeNullableFilter
+  lastName: StringNullableFilter
+  profile: ProfileWhereUniqueInput
+  teams: TeamListRelationFilter
+  updatedAt: DateTimeFilter
+  username: StringFilter
+  workspaces: WorkspaceListRelationFilter
+}
+
+input UserWhereUniqueInput {
+  id: String!
+}
+
+type Workspace {
+  createdAt: DateTime!
+  domain: String
+  id: String!
+  isPublic: Boolean!
+  name: String!
+  teams(orderBy: [TeamOrderByInput!], skip: Float, take: Float, where: TeamWhereInput): [Team!]!
+  updatedAt: DateTime!
+  url: String
+  user(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+}
+
+input WorkspaceCreateInput {
+  domain: String
+  isPublic: Boolean!
+  name: String!
+  teams: TeamCreateNestedManyWithoutWorkspacesInput
+  url: String
+  user: UserCreateNestedManyWithoutWorkspacesInput
+}
+
+input WorkspaceCreateNestedManyWithoutTeamsInput {
+  connect: [WorkspaceWhereUniqueInput!]
+}
+
+input WorkspaceCreateNestedManyWithoutUsersInput {
+  connect: [WorkspaceWhereUniqueInput!]
+}
+
+input WorkspaceListRelationFilter {
+  every: WorkspaceWhereInput
+  none: WorkspaceWhereInput
+  some: WorkspaceWhereInput
+}
+
+input WorkspaceOrderByInput {
+  createdAt: SortOrder
+  domain: SortOrder
+  id: SortOrder
+  isPublic: SortOrder
+  name: SortOrder
+  updatedAt: SortOrder
+  url: SortOrder
+}
+
+input WorkspaceUpdateInput {
+  domain: String
+  isPublic: Boolean
+  name: String
+  teams: TeamUpdateManyWithoutWorkspacesInput
+  url: String
+  user: UserUpdateManyWithoutWorkspacesInput
+}
+
+input WorkspaceUpdateManyWithoutTeamsInput {
+  connect: [WorkspaceWhereUniqueInput!]
+  disconnect: [WorkspaceWhereUniqueInput!]
+  set: [WorkspaceWhereUniqueInput!]
+}
+
+input WorkspaceUpdateManyWithoutUsersInput {
+  connect: [WorkspaceWhereUniqueInput!]
+  disconnect: [WorkspaceWhereUniqueInput!]
+  set: [WorkspaceWhereUniqueInput!]
+}
+
+input WorkspaceWhereInput {
+  createdAt: DateTimeFilter
+  domain: StringNullableFilter
+  id: StringFilter
+  isPublic: BooleanFilter
+  name: StringFilter
+  teams: TeamListRelationFilter
+  updatedAt: DateTimeFilter
+  url: StringNullableFilter
+  user: UserListRelationFilter
+}
+
+input WorkspaceWhereUniqueInput {
+  id: String!
+}
