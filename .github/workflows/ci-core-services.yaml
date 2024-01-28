@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
   push:
     branches: ["*"]
-    paths: ["./apps/core-services"]
+    paths: ["./"]
 
 jobs:
   continuous-integration:
@@ -25,12 +25,9 @@ jobs:
 
       - name: install dependencies
         run: npm install
-        working-directory: ./apps/core-services
 
       - name: build
         run: npm run build
-        working-directory: ./apps/core-services
 
       - name: test
         run: npm test
-        working-directory: ./apps/core-services
