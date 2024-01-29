@@ -3245,10 +3245,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/graphql-type-json@0.3.3":
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/@types/graphql-type-json/-/graphql-type-json-0.3.3.tgz#91e7460222d9495d37f8277a9e0b7ed366dd1bfa"
-  integrity sha512-xT+yYxASVuIgs3262jTQNfEwLvFkgh/5gBjz3EWYgPCA8HWS8iVfnWNiVsOFzvRLYbWGdKQPl8eB3LiYLLtkfA==
+"@types/graphql-type-json@0.3.5":
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/@types/graphql-type-json/-/graphql-type-json-0.3.5.tgz#c09b45c01126187fe094637e9f2a50f1adfa75ca"
+  integrity sha512-BpY+pV3FQWM8DIPDMYo2cC3cJYN4+fnph0aYF7OHjWgUkb+dDJ+gQn27xfyTiQkmhvgVQ32ztUT43sAeG/KZVQ==
   dependencies:
     graphql "^14.5.3"
 
